@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">My Android Calculator</string>
+    <string name="_1">1</string>
+    <string name="_9">9</string>
+    <string name="cos">cos</string>
+    <string name="tan">tan</string>
+    <string name="rad">rad</string>
+    <string name="deg">Deg</string>
+    <string name="my_android_calculator">My Android Calculator</string>
+    <string name="_2">2</string>
+    <string name="minus">-</string>
+    <string name="equal">=</string>
+    <string name="division">%</string>
+    <string name="ac">AC</string>
+    <string name="multipliying">X</string>
+    <string name="del">DEL</string>
+    <string name="plus">+</string>
+    <string name="_8">8</string>
+    <string name="shift">shift</string>
+    <string name="sen">sen</string>
+    <string name="_7">7</string>
+    <string name="point">.</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_6">6</string>
+    <string name="textview">TextView</string>
+    <string name="_0">0</string>
+    <string name="_5">5</string>
 </resources>
