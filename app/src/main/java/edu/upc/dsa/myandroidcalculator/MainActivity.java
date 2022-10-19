@@ -1,50 +1,46 @@
 package edu.upc.dsa.myandroidcalculator;
 // logica de la aplicación
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.support.v4.app.INotificationSideChannel;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn1;
-    private Button btn2;
-    private Button btn3;
-    private Button btn4;
-    private Button btn5;
-    private Button btn6;
-    private Button btn7;
-    private Button btn8;
-    private Button btn9;
-    private Button btn0;
-    private Button btn_equal;
-    private Button btn_ac;
-    private Button btn_del;
-    private Button btn_suma;
-    private Button btn_resta;
-    private Button btn_multiplicacion;
-    private Button btn_division;
-    private Button btn_punto;
-    private Button btn_shift;
-    private Button btn_deg;
-    private Button btn_rad;
-    private Button btn_sen;
-    private Button btn_cos;
-    private Button btn_tan;
+    public Button btn1;
+    public Button btn2;
+    public Button btn3;
+    public Button btn4;
+    public Button btn5;
+    public Button btn6;
+    public Button btn7;
+    public Button btn8;
+    public Button btn9;
+    public Button btn0;
+    public Button btn_equal;
+    public Button btn_ac;
+    public Button btn_suma;
+    public Button btn_resta;
+    public Button btn_multiplicacion;
+    public Button btn_division;
+    public Button btn_punto;
+    public Button btn_shift;
+    public Button btn_deg;
+    public Button btn_rad;
+    public Button btn_sen;
+    public Button btn_cos;
+    public Button btn_tan;
 
-    private TextView textView;
-    private EditText editText;
+    public TextView textView;
+    public EditText editText;
 
 
 
@@ -85,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     private char op1;
     private char op2;
+
 
     public void OnClick0(View view) {
         editText.getText().append("0");
