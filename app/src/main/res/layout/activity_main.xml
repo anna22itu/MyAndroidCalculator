@@ -171,7 +171,8 @@
         android:backgroundTint="#FF9800"
         android:onClick="SumaOnClick"
         android:text="@string/plus"
-        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -200,6 +201,7 @@
         android:backgroundTint="#FF9800"
         android:onClick="MultiOnClick"
         android:text="@string/multipliying"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.9"
@@ -366,6 +368,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13999999" />
+        app:layout_constraintVertical_bias="0.13999999"
+        android:autofillHints="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

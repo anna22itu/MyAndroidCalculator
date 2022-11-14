@@ -175,5 +175,5 @@ public class MainActivity extends AppCompatActivity {
     public void EqualOnClick(View view) {
         String igual = editText.getText().toString();
     }
-
+        editText.
 }
