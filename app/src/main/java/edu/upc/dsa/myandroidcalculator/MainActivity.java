@@ -13,6 +13,8 @@ import android.support.v4.app.INotificationSideChannel;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     public Button btn1;
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     public Button btn_multiplicacion;
     public Button btn_division;
     public Button btn_punto;
-    public Button btn_shift;
     public Button btn_deg;
     public Button btn_rad;
     public Button btn_sen;
@@ -69,18 +70,49 @@ public class MainActivity extends AppCompatActivity {
         btn_sen = findViewById(R.id.btn_sen);
         btn_cos = findViewById(R.id.btn_cos);
         btn_tan = findViewById(R.id.btn_tan);
-        btn_shift = findViewById(R.id.btn_shift);
         btn_deg = findViewById(R.id.btn_deg);
         btn_rad = findViewById(R.id.btn_rad);
         textView = findViewById(R.id.textView1);
         editText = findViewById(R.id.plaintext1);
-
-
     }
 
 
-    private char op1;
-    private char op2;
+    public double op1;
+    public double op2;
+    public String operacion = "";
+    public double resultado;
+
+    public Boolean rad = false;
+    public Boolean deg = true;
+
+    private void operantePrimero(String digito){
+        this.op1 = Double.parseDouble(digito);
+    }
+    private void operacion(String operacion){
+        this.operacion = operacion;
+
+    }
+    private void operanteSegundo(String digito){
+        this.op2 = Double.parseDouble(digito);
+    }
+
+    private double resultado(){
+        switch (operacion) {
+            case "+":
+                resultado = op1 + op2;
+                break;
+            case "-":
+                resultado = op1 - op2;
+                break;
+            case "x":
+                resultado = op1 * op2;
+                break;
+            case "%":
+                resultado = op1 / op2;
+                break;
+        }
+        return resultado;
+}
 
 
     public void OnClick0(View view) {
@@ -129,15 +161,19 @@ public class MainActivity extends AppCompatActivity {
 
     public void AcOnClick(View view) {
         editText.getText().clear();
-    }
-
-    public void ShiftOnClick(View view) {
+        this.op1 = 0.0;
+        this.op2 = 0.0;
+        this.operacion = "";
     }
 
     public void RadOnClick(View view) {
+        rad = true;
+        deg = false;
     }
 
     public void DegOnClick(View view) {
+        deg = true;
+        rad = false;
     }
 
     public void SenOnClick(View view) {
@@ -153,27 +189,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void MultiOnClick(View view) {
-        editText.getText().append("x");
-        String mutltiplicacion = editText.getText().toString();
+        operantePrimero(editText.getText().toString());
+        operacion("x");
+        editText.getText().clear();
     }
 
     public void DivisionOnClick(View view) {
-        editText.getText().append("%");
-        String division = editText.getText().toString();
+        operantePrimero(editText.getText().toString());
+        operacion("%");
+        editText.getText().clear();
     }
 
     public void SumaOnClick(View view) {
-        editText.getText().append("+");
-        String suma = editText.getText().toString();
+        operantePrimero(editText.getText().toString());
+        operacion("+");
+        editText.getText().clear();
     }
 
     public void RestaOnClick(View view) {
-        editText.getText().append("-");
-        String resta = editText.getText().toString();
+        operantePrimero(editText.getText().toString());
+        operacion("-");
+        editText.getText().clear();
     }
 
     public void EqualOnClick(View view) {
-        String igual = editText.getText().toString();
+        operanteSegundo(editText.getText().toString());
+        editText.getText().clear();
+
+        if(rad){
+            resultado = resultado*Math.PI/180;
+        }
+
+        Double mostrarResult = resultado();
+
+        editText.getText().append(mostrarResult.toString());
     }
 
 }
