@@ -6,14 +6,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.support.v4.app.INotificationSideChannel;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         btn_tan = findViewById(R.id.btn_tan);
         btn_deg = findViewById(R.id.btn_deg);
         btn_rad = findViewById(R.id.btn_rad);
-        textView = findViewById(R.id.textView1);
+        textView = findViewById(R.id.textViewTitle);
         editText = findViewById(R.id.plaintext1);
     }
 
@@ -81,13 +76,15 @@ public class MainActivity extends AppCompatActivity {
     public double op2;
     public String operacion = "";
     public double resultado;
+    double dig;
 
-    public Boolean rad = false;
+    public Boolean rad = false;  //por defecto esta grados
     public Boolean deg = true;
 
     private void operantePrimero(String digito){
-        this.op1 = Double.parseDouble(digito);
+         this.op1 = Double.parseDouble(digito);
     }
+
     private void operacion(String operacion){
         this.operacion = operacion;
 
@@ -177,15 +174,68 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SenOnClick(View view) {
-        editText.getText().append("sen");
+        if (this.rad){
+            this.dig = Double.parseDouble(editText.getText().toString());
+        }
+        else{
+            this.dig = Double.parseDouble(editText.getText().toString())*Math.PI/180;
+        }
+
+        if (this.operacion.equals("")){
+            double res = Math.sin(this.dig);
+            editText.getText().clear();
+            editText.getText().append(String.valueOf(res));
+        }
+        else {
+            operanteSegundo(String.valueOf(Math.sin(this.dig)));
+            editText.getText().clear();
+            Double mostrarResult = resultado();
+            editText.getText().append(mostrarResult.toString());
+        }
     }
 
     public void CosOnClick(View view) {
-        editText.getText().append("cos");
+        double dig;
+        if (this.rad){
+            dig = Double.parseDouble(editText.getText().toString())*Math.PI/180;
+        }
+        else{
+            dig = Double.parseDouble(editText.getText().toString());
+        }
+
+        if (this.operacion.equals("")){
+            double res = Math.cos(dig);
+            editText.getText().clear();
+            editText.getText().append(String.valueOf(res));
+        }
+        else {
+            operanteSegundo(String.valueOf(Math.cos(dig)));
+            editText.getText().clear();
+            Double mostrarResult = resultado();
+            editText.getText().append(mostrarResult.toString());
+        }
     }
 
     public void TanOnClick(View view) {
-        editText.getText().append("tan");
+        double dig;
+        if (this.rad){
+            dig = Double.parseDouble(editText.getText().toString())*Math.PI/180;
+        }
+        else{
+            dig = Double.parseDouble(editText.getText().toString());
+        }
+
+        if (this.operacion.equals("")){
+            double res = Math.tan(dig);
+            editText.getText().clear();
+            editText.getText().append(String.valueOf(res));
+        }
+        else {
+            operanteSegundo(String.valueOf(Math.tan(dig)));
+            editText.getText().clear();
+            Double mostrarResult = resultado();
+            editText.getText().append(mostrarResult.toString());
+        }
     }
 
     public void MultiOnClick(View view) {
@@ -215,10 +265,6 @@ public class MainActivity extends AppCompatActivity {
     public void EqualOnClick(View view) {
         operanteSegundo(editText.getText().toString());
         editText.getText().clear();
-
-        if(rad){
-            resultado = resultado*Math.PI/180;
-        }
 
         Double mostrarResult = resultado();
 
