@@ -195,21 +195,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void CosOnClick(View view) {
-        double dig;
         if (this.rad){
-            dig = Double.parseDouble(editText.getText().toString())*Math.PI/180;
+            this.dig = Double.parseDouble(editText.getText().toString());
         }
         else{
-            dig = Double.parseDouble(editText.getText().toString());
+            this.dig = Double.parseDouble(editText.getText().toString())*Math.PI/180;
         }
 
         if (this.operacion.equals("")){
-            double res = Math.cos(dig);
+            double res = Math.cos(this.dig);
             editText.getText().clear();
             editText.getText().append(String.valueOf(res));
         }
         else {
-            operanteSegundo(String.valueOf(Math.cos(dig)));
+            operanteSegundo(String.valueOf(Math.cos(this.dig)));
             editText.getText().clear();
             Double mostrarResult = resultado();
             editText.getText().append(mostrarResult.toString());
@@ -217,21 +216,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void TanOnClick(View view) {
-        double dig;
         if (this.rad){
-            dig = Double.parseDouble(editText.getText().toString())*Math.PI/180;
+            this.dig = Double.parseDouble(editText.getText().toString());
         }
         else{
-            dig = Double.parseDouble(editText.getText().toString());
+            this.dig = Double.parseDouble(editText.getText().toString())*Math.PI/180;
         }
 
         if (this.operacion.equals("")){
-            double res = Math.tan(dig);
+            double res = Math.tan(this.dig);
             editText.getText().clear();
             editText.getText().append(String.valueOf(res));
         }
         else {
-            operanteSegundo(String.valueOf(Math.tan(dig)));
+            operanteSegundo(String.valueOf(Math.tan(this.dig)));
             editText.getText().clear();
             Double mostrarResult = resultado();
             editText.getText().append(mostrarResult.toString());
