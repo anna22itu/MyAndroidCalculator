@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     public Button btn1;
@@ -82,12 +84,11 @@ public class MainActivity extends AppCompatActivity {
     public Boolean deg = true;
 
     private void operantePrimero(String digito){
-         this.op1 = Double.parseDouble(digito);
+        this.op1 = Double.parseDouble(digito);
     }
 
     private void operacion(String operacion){
         this.operacion = operacion;
-
     }
     private void operanteSegundo(String digito){
         this.op2 = Double.parseDouble(digito);
@@ -237,25 +238,49 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void MultiOnClick(View view) {
-        operantePrimero(editText.getText().toString());
+        if (Objects.equals(this.operacion, "")){
+            operantePrimero(editText.getText().toString());
+        }
+        else{
+            operanteSegundo(editText.getText().toString());
+            operantePrimero(Double.toString(resultado()));
+        }
         operacion("x");
         editText.getText().clear();
     }
 
     public void DivisionOnClick(View view) {
-        operantePrimero(editText.getText().toString());
+        if (Objects.equals(this.operacion, "")){
+            operantePrimero(editText.getText().toString());
+        }
+        else{
+            operanteSegundo(editText.getText().toString());
+            operantePrimero(Double.toString(resultado()));
+        }
         operacion("%");
         editText.getText().clear();
     }
 
     public void SumaOnClick(View view) {
-        operantePrimero(editText.getText().toString());
+        if (Objects.equals(this.operacion, "")){
+            operantePrimero(editText.getText().toString());
+        }
+        else{
+            operanteSegundo(editText.getText().toString());
+            operantePrimero(Double.toString(resultado()));
+        }
         operacion("+");
         editText.getText().clear();
     }
 
     public void RestaOnClick(View view) {
-        operantePrimero(editText.getText().toString());
+        if (Objects.equals(this.operacion, "")){
+            operantePrimero(editText.getText().toString());
+        }
+        else{
+            operanteSegundo(editText.getText().toString());
+            operantePrimero(Double.toString(resultado()));
+        }
         operacion("-");
         editText.getText().clear();
     }
@@ -267,6 +292,10 @@ public class MainActivity extends AppCompatActivity {
         Double mostrarResult = resultado();
 
         editText.getText().append(mostrarResult.toString());
+
+        this.op1 = 0.0;
+        this.op2 = 0.0;
+        this.operacion = "";
     }
 
 }
